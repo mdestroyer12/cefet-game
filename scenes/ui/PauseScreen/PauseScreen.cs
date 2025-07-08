@@ -9,11 +9,13 @@ namespace Game.UI
         public bool MinigameLocation { get; set; } = false;
 
         private bool mouseWasVisible;
+        private TransitionHandler transitionHandler;
 
         public void HandlePause()
         {
+            if (transitionHandler.IsPlaying) return;
             mouseWasVisible = Input.MouseMode == Input.MouseModeEnum.Visible;
-
+            
             if (GetTree().Paused) OnResumeButtonPressed();
             else
             {
@@ -49,10 +51,11 @@ namespace Game.UI
 
         public override void _Ready()
         {
+            transitionHandler = GetNode<TransitionHandler>("/root/TransitionHandler");
             if (MinigameLocation)
             {
                 var rows = GetNode("%OptionRows");
-                var button = ResourceLoader.Load<PackedScene>("res://scenes/ui/Menu/menu_button.tscn").Instantiate<Button>(); ;
+                var button = ResourceLoader.Load<PackedScene>("res://scenes/ui/Menu/menu_button.tscn").Instantiate<Button>();
                 button.Text = "Voltar \u00e0 escola";
                 button.Pressed += GoToSchool;
                 rows.AddChild(button);

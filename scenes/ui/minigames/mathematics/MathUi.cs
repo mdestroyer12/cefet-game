@@ -118,7 +118,6 @@ namespace Game.UI
             _dragInstance = GetNode<Drag>("../Drag");
             _parchment = GetNode<MathParchment>("Parchment");
             _switchingLabel = GetNode<Label>("%SwitchingLabel");
-
             GetNode<TextureButton>("%PauseButton").Pressed += () => GetNodeOrNull<PauseScreen>("../PauseScreen")?.HandlePause();
             foreach (var c in _questionsContainer.GetChildren()) c.QueueFree();
         }

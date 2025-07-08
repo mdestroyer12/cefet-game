@@ -11,6 +11,11 @@ namespace Game
         private TransitionScene TransitionScene { get; set; }
         private AnimationPlayer TransitionPlayer { get; set; }
         private Sprite2D AnimationSprite { get; set; }
+        private bool _IsPlaying = false;
+
+        public bool IsPlaying {
+            get => _IsPlaying;
+        }
 
         public void Play(StringName animationName, string message = null, float timeOnScreen = 0)
         {
@@ -31,6 +36,7 @@ namespace Game
 
                     AnimationSprite.Show();
                     TransitionPlayer.Play(animationName);
+                    _IsPlaying = true;
 
                     void onFinish(StringName animName)
                     {
@@ -77,6 +83,7 @@ namespace Game
                     {
                         AnimationSprite.Hide();
                         TransitionPlayer.AnimationFinished -= onFinish;
+                        _IsPlaying = false;
                     }
                 }
             }
