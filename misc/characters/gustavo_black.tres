@@ -44,3 +44,4 @@ script = ExtResource("1_o0e8d")
 SpriteAnimations = SubResource("SpriteFrames_33tyq")
 SpritesOffset = Vector2(-2, 0)
 Name = "Gustavo Black"
+ImagesPath = ""

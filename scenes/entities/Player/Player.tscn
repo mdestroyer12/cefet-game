@@ -2,11 +2,86 @@
 
 [ext_resource type="Script" path="res://scenes/entities/Player/Player.cs" id="1_w6u6y"]
 [ext_resource type="Script" path="res://scenes/entities/InteractionArea.cs" id="2_ceny5"]
-[ext_resource type="Texture2D" uid="uid://bl66g1txdwbgd" path="res://assets/images/entities/Player.png" id="3_1i4ru"]
 [ext_resource type="Texture2D" uid="uid://ca8g831ktm3nq" path="res://assets/images/entities/shadow.png" id="3_emeso"]
+[ext_resource type="Texture2D" uid="uid://b18bmm0tmg7uo" path="res://assets/images/entities/Player.tres" id="4_4d36c"]
 [ext_resource type="Texture2D" uid="uid://ddbfg41c3up4s" path="res://assets/images/equipments/backpack_1.png" id="4_gd2qs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lww17"]
+
+[sub_resource type="Animation" id="Animation_6u2nr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Direction:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Direction/InteractionArea:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Direction/InteractionArea/CollisionHorizontal:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Direction/InteractionArea/CollisionHorizontal:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Direction/InteractionArea/CollisionVertical:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Direction/InteractionArea/CollisionVertical:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1famo"]
 resource_name = "idle_back"
@@ -816,81 +891,6 @@ tracks/7/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_6u2nr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Direction:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Direction/InteractionArea:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 15)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Direction/InteractionArea/CollisionHorizontal:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Direction/InteractionArea/CollisionHorizontal:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Direction/InteractionArea/CollisionVertical:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Direction/InteractionArea/CollisionVertical:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gcwd6"]
 _data = {
 "RESET": SubResource("Animation_6u2nr"),
@@ -1014,10 +1014,10 @@ texture = ExtResource("3_emeso")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_1i4ru")
+texture = ExtResource("4_4d36c")
 offset = Vector2(-2, 0)
 hframes = 21
-frame = 8
+frame = 4
 
 [node name="Backpacks" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -1029,7 +1029,7 @@ texture_filter = 1
 texture = ExtResource("4_gd2qs")
 offset = Vector2(-1, 0)
 hframes = 14
-frame = 5
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1042,7 +1042,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/IsIdle = false
 parameters/conditions/IsMoving = false
 parameters/Idle/blend_position = Vector2(-0.00236964, 0.291176)
-parameters/Walk/blend_position = Vector2(-0.00236964, 0.0116402)
+parameters/Walk/blend_position = Vector2(-0.99818, 0.0234042)
 
 [connection signal="area_entered" from="Direction/InteractionArea" to="Direction/InteractionArea" method="OnAreaEntered"]
 [connection signal="area_exited" from="Direction/InteractionArea" to="Direction/InteractionArea" method="OnAreaExited"]

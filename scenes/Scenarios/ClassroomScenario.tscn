@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://c8su53kxl3s01"]
+[gd_scene load_steps=25 format=4 uid="uid://c8su53kxl3s01"]
 
-[ext_resource type="Texture2D" uid="uid://73q83y4ukkhb" path="res://assets/images/tiles/Floor.png" id="1_os648"]
+[ext_resource type="Texture2D" uid="uid://480y7cpgur3s" path="res://assets/images/tiles/Floor.tres" id="1_tdcws"]
 [ext_resource type="PackedScene" uid="uid://c5ac2gsumi5jo" path="res://scenes/entities/Player/Player.tscn" id="2_78hkg"]
 [ext_resource type="Texture2D" uid="uid://iodmln0ua3t7" path="res://assets/misc/World/Floor.png" id="2_v5vt2"]
 [ext_resource type="PackedScene" uid="uid://b7etykk20vn6n" path="res://scenes/Scenarios/ClassroomScenario/StudentDesk.tscn" id="3_r5yv7"]
@@ -11,13 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://dkwk7mou7o2fm" path="res://assets/misc/World/leaderboard.png" id="9_7cvk2"]
 [ext_resource type="PackedScene" uid="uid://f47qthi4c6ee" path="res://scenes/entities/NPC/NPC.tscn" id="10_6hku2"]
 [ext_resource type="Resource" uid="uid://0t7kidkdh5o3" path="res://misc/characters/vitoria.tres" id="11_yq3et"]
+[ext_resource type="Texture2D" uid="uid://bbjbs61hk7756" path="res://assets/misc/light-point.png" id="12_02wyn"]
 [ext_resource type="Script" path="res://scenes/ui/GameplayUI.cs" id="12_v1dhh"]
 [ext_resource type="PackedScene" uid="uid://d0vpm0jawg3f4" path="res://scenes/ui/MainGameUI/MainGameUi.tscn" id="13_p8w5o"]
-[ext_resource type="PackedScene" uid="uid://dutljyogmx02w" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="14_hixty"]
+[ext_resource type="PackedScene" path="res://scenes/ui/Dialogue/NewDialogueUi.tscn" id="14_hixty"]
 [ext_resource type="PackedScene" uid="uid://cgrp3bxwruiee" path="res://scenes/ui/PauseScreen/PauseScreen.tscn" id="16_trkn7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rctbj"]
-texture = ExtResource("1_os648")
+texture = ExtResource("1_tdcws")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/probability = 0.333
@@ -283,6 +284,53 @@ CharacterInfo = ExtResource("11_yq3et")
 DialoguePath = "res://misc/dialogues/Vitoria/dialogo_demo_teste.json"
 InteractionUI = NodePath("../UI/NewDialogueUi")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.791999, 0.791999, 0.791999, 1)
+
+[node name="Light" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Light"]
+position = Vector2(840, 187)
+scale = Vector2(0.412037, 0.574962)
+energy = 0.5
+texture = ExtResource("12_02wyn")
+height = 200.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Light"]
+position = Vector2(840, 511)
+scale = Vector2(0.412037, 0.574962)
+energy = 0.5
+texture = ExtResource("12_02wyn")
+height = 200.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="Light"]
+position = Vector2(355, 511)
+scale = Vector2(0.412037, 0.574962)
+energy = 0.5
+texture = ExtResource("12_02wyn")
+height = 200.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="Light"]
+position = Vector2(355, 187)
+scale = Vector2(0.412037, 0.574962)
+energy = 0.5
+texture = ExtResource("12_02wyn")
+height = 200.0
+
+[node name="PointLight2D5" type="PointLight2D" parent="Light"]
+position = Vector2(607, 511)
+scale = Vector2(0.412037, 0.574962)
+energy = 0.5
+texture = ExtResource("12_02wyn")
+height = 200.0
+
+[node name="PointLight2D6" type="PointLight2D" parent="Light"]
+position = Vector2(607, 187)
+scale = Vector2(0.412037, 0.574962)
+energy = 0.5
+texture = ExtResource("12_02wyn")
+height = 200.0
+
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("12_v1dhh")
 player = NodePath("../Player")
@@ -291,6 +339,7 @@ player = NodePath("../Player")
 texture = SubResource("CanvasTexture_vwgv1")
 
 [node name="MainGameUi" parent="UI" instance=ExtResource("13_p8w5o")]
+metadata/_edit_lock_ = true
 
 [node name="NewDialogueUi" parent="UI" instance=ExtResource("14_hixty")]
 visible = false
