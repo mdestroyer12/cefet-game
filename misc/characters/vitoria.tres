@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Character" load_steps=8 format=3 uid="uid://0t7kidkdh5o3"]
 
 [ext_resource type="Texture2D" uid="uid://b0mjha8y0k8dc" path="res://assets/images/entities/characters/vitorinha.tres" id="1_d0mor"]
-[ext_resource type="Script" path="res://misc/characters/Character.cs" id="1_g6utg"]
+[ext_resource type="Script" uid="uid://c13w8ham8k8fc" path="res://misc/characters/Character.cs" id="1_g6utg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7uy1x"]
 atlas = ExtResource("1_d0mor")
